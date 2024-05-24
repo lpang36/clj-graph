@@ -113,6 +113,7 @@
   (if (> n 0) (add-nodes (add-node graph) (- n 1)) graph))
 
 (defn add-edge
+  ([graph mean sd original-mean id] (assoc-in graph [:edges id] (->EdgeState id mean sd original-mean nil)))
   ([graph mean sd id] (assoc-in graph [:edges id] (->EdgeState id mean sd mean nil)))
   ([graph mean sd] (add-edge graph mean sd (count (:edges graph)))))
 
